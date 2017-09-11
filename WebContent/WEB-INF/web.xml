@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
+  <welcome-file-list>
+  	<welcome-file>Login.jsp</welcome-file>
+  </welcome-file-list>
   <servlet>
     <servlet-name>LoginServlet</servlet-name>
     <jsp-file>/Login.jsp</jsp-file>
@@ -9,8 +12,8 @@
     <jsp-file>/Logout.jsp</jsp-file>
   </servlet>
   <servlet>
-    <servlet-name>UserServlet</servlet-name>
-    <jsp-file>/User.jsp</jsp-file>
+    <servlet-name>UserInfoServlet</servlet-name>
+    <jsp-file>/UserInfo.jsp</jsp-file>
   </servlet>
   <servlet>
     <servlet-name>ErrorServlet</servlet-name>
@@ -37,8 +40,8 @@
     <url-pattern>/Logout</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
-    <servlet-name>UserServlet</servlet-name>
-    <url-pattern>/User</url-pattern>
+    <servlet-name>UserInfoServlet</servlet-name>
+    <url-pattern>/UserInfo</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
     <servlet-name>ErrorServlet</servlet-name>

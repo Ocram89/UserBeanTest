@@ -2,10 +2,11 @@ package com.marco.bean;
 
 import java.io.Serializable;
 
-import dao.UserDAO;
-import dao.UserDAOSimpleImpl;
+import com.marco.dao.UserDAO;
+import com.marco.dao.UserDAOSimpleImpl;
+import com.marco.service.UserController;
 
-public class User implements Serializable{
+public class UserBean implements Serializable{
 
 	/**
 	 * 
@@ -18,14 +19,12 @@ public class User implements Serializable{
 	private String lastName;
 	private int age;
 	private Boolean isLogged; 
-	private UserDAO userDao;
 	
-	public User(){
-		userDao = new UserDAOSimpleImpl();
+	public UserBean(){
 		isLogged = false;
 	}
 	
-	public User(String username, String password, String firstName, String lastName, Integer age){
+	public UserBean(String username, String password, String firstName, String lastName, Integer age){
 		this.username = username;
 		this.password = password;
 		this.firstName = firstName;
@@ -73,15 +72,16 @@ public class User implements Serializable{
 		this.password = password;
 	}
 
-	public void login(){
-		if(userDao.login(this)){
+	public boolean login(){
+		if(UserController.getInstance().login(this)){
 			this.isLogged = true;
 		}
+		return this.isLogged;
 	}
 	
 	public Boolean save(){
 		System.out.println(this);
-		return userDao.insert(this);
+		return UserController.getInstance().insert(this);
 	}
 	
 	public void logout(){

@@ -1,10 +1,10 @@
-package dao;
+package com.marco.dao;
 
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.marco.bean.User;
+import com.marco.bean.UserBean;
 
 public class UserDAOSimpleImpl implements UserDAO, Serializable {
 
@@ -12,16 +12,16 @@ public class UserDAOSimpleImpl implements UserDAO, Serializable {
 	 * 
 	 */
 	
-	List<User> userList;
+	List<UserBean> userList;
 	
 	
 	private static final long serialVersionUID = 2927607285058681035L;
 
 	public UserDAOSimpleImpl() {
-		userList = new ArrayList<User>();
-		User user1 = new User("spongebob", "1234", "Spongebob", "Squarepants", 20);
-		User user2 = new User("patrick", "password", "Patrick", "Star", 20);
-		User user3 = new User("squidward", "qwerty", "Squidward", "Tentacles", 31);
+		userList = new ArrayList<UserBean>();
+		UserBean user1 = new UserBean("spongebob", "1234", "Spongebob", "Squarepants", 20);
+		UserBean user2 = new UserBean("patrick", "password", "Patrick", "Star", 20);
+		UserBean user3 = new UserBean("squidward", "qwerty", "Squidward", "Tentacles", 31);
 		
 		userList.add(user1);
 		userList.add(user2);
@@ -29,8 +29,8 @@ public class UserDAOSimpleImpl implements UserDAO, Serializable {
 	}
 	
 	@Override
-	public Boolean login(User user) {
-		for(User u : userList){
+	public Boolean login(UserBean user) {
+		for(UserBean u : userList){
 			if(u.getUsername().equals(user.getUsername()) && u.getPassword().equals(user.getPassword())){
 				user.setFirstName(u.getFirstName());
 				user.setLastName(u.getLastName());
@@ -45,7 +45,7 @@ public class UserDAOSimpleImpl implements UserDAO, Serializable {
 
 	@Override
 	public Boolean exists(String username) {
-		for(User u : userList){
+		for(UserBean u : userList){
 			if(u.getUsername().equals(username)){
 				return true;
 			}
@@ -54,7 +54,7 @@ public class UserDAOSimpleImpl implements UserDAO, Serializable {
 	}
 
 	@Override
-	public Boolean insert(User user) {
+	public Boolean insert(UserBean user) {
 		if(exists(user.getUsername())){
 			return false;
 		}
@@ -63,7 +63,7 @@ public class UserDAOSimpleImpl implements UserDAO, Serializable {
 	}
 
 	@Override
-	public void delete(User user) {
+	public void delete(UserBean user) {
 		
 	}
 
@@ -71,7 +71,7 @@ public class UserDAOSimpleImpl implements UserDAO, Serializable {
 	/**
 	 * Not a DB implementation, this method does nothing
 	 */
-	public void update(User user) {
+	public void update(UserBean user) {
 		return;
 	}
 

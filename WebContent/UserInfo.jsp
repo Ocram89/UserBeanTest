@@ -1,17 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<jsp:useBean class="com.marco.bean.User" id="userBean" scope="session"/>
-<jsp:setProperty name="userBean" property="*"/>
+<jsp:useBean class="com.marco.bean.UserBean" id="userBean" scope="session"/>
+<!--<jsp:setProperty name="userBean" property="*"/>-->
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <%
-	userBean.login();
 	if(!userBean.isLogged()){
 %>
 	<jsp:forward page="ErrorPage">
-		<jsp:param value="wrong username or password" name="errorMessage"/>
+		<jsp:param value="User not logged" name="errorMessage"/>
 	</jsp:forward>
 <%
 	}
@@ -20,7 +18,6 @@
 <title>User Information Page</title>
 </head>
 <body>
-<p><c:out value="value= ${1+2+3}"/>
 <h1>User Info</h1>
 <br>
 <h3>Username: </h3>

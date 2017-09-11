@@ -1,4 +1,4 @@
-package dao;
+package com.marco.dao;
 
 import java.io.Serializable;
 import java.sql.Connection;
@@ -6,9 +6,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import com.marco.bean.User;
-
-import service.DataSource;
+import com.marco.bean.UserBean;
+import com.marco.service.DataSource;
 
 public class UserDAOJdbcImpl implements UserDAO, Serializable{
 
@@ -18,7 +17,7 @@ public class UserDAOJdbcImpl implements UserDAO, Serializable{
 	private static final long serialVersionUID = 678059478957532786L;
 
 	@Override
-	public Boolean login(User user) {
+	public Boolean login(UserBean user) {
 		Connection conn = null;
 		PreparedStatement ps = null;
 		ResultSet rs = null;
@@ -76,7 +75,7 @@ public class UserDAOJdbcImpl implements UserDAO, Serializable{
 	}
 
 	@Override
-	public Boolean insert(User user) {
+	public Boolean insert(UserBean user) {
 		Connection conn = null;
 		PreparedStatement ps = null;
 		
@@ -111,7 +110,7 @@ public class UserDAOJdbcImpl implements UserDAO, Serializable{
 	}
 
 	@Override
-	public void delete(User user) {
+	public void delete(UserBean user) {
 		Connection conn = null;
 		PreparedStatement ps = null;
 		
@@ -136,7 +135,7 @@ public class UserDAOJdbcImpl implements UserDAO, Serializable{
 	}
 
 	@Override
-	public void update(User user) {
+	public void update(UserBean user) {
 		Connection conn = null;
 		PreparedStatement ps = null;
 		
